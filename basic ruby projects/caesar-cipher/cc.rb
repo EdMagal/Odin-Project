@@ -17,3 +17,9 @@ def caesar_cipher(text, offset=1)
 
     cipher
 end
+
+p caesar_cipher("Hello World!", 1) # "Ifmmp Xpsme!"
+p caesar_cipher("Veni, vidi, vici", -3) # "Sbkf, sfaf, sfzf"
+p caesar_cipher("T#E$S%T¨ U&&AIRir91", 5) # "Y#J$X%Y¨ Z&&FNWnw91"
+p caesar_cipher("Hello World!", 26) # "Hello World!"
+
