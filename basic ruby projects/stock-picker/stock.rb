@@ -22,4 +22,4 @@ def stock_picker(arr)
 end
 
 p stock_picker([17,3,6,9,15,8,6,1,10]) # [1, 4]
-p stock_picker([10,12,15,3,7,8,12,0,8]) # [1, 4]
+p stock_picker([10,12,15,3,7,8,12,0,8]) # [3, 6]
