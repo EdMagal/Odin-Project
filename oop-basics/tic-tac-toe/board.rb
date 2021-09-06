@@ -26,16 +26,38 @@ class Board
         puts "====" * @grid.size + "="
     end
 
-    # These methods replace @grid[pos[0]][pos[1]] with self[pos]
+    def win_row?(mark)
+        @grid.any? { |row| row.all?(mark) }
+    end
+
+    def win_col?(mark)
+        @grid.transpose.any? { |col| col.all?(mark) }
+    end
+
+    def win_diagonal?(mark)
+        len = @grid.size
+        ltr = (0...len).map { |i| @grid[i][i] }.all?(mark) # left to right
+        rtl = (0...len).map { |i| @grid[i].reverse[i] }.all?(mark) # right to left
+        ltr or rtl
+    end
+
+    def win?(mark)
+        win_row?(mark) or win_col?(mark) or win_diagonal?(mark)
+    end
+
+    def empty_positions?
+        empty = "_"
+        @grid.flatten.any?(empty)
+    end
+
+    # Replaces @grid[pos[0]][pos[1]] with self[pos]
     def [](pos)
         row, col = pos
         @grid[row][col]
     end
 
     def []=(pos, value)
-        self[pos] = value
+        row, col = pos
+        @grid[row][col] = value
     end
 end
-
-b = Board.new
-b.print
